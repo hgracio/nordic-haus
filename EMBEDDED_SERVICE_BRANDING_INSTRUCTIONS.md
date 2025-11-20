@@ -27,17 +27,26 @@ Since Embedded Service Branding for Web V2 (Embedded Messaging) has limited Meta
 **Company Logo / Brand Image:**
 - Click "Upload" or "Choose from Files"
 - Select Static Resource: `NordicHausLogo`
+- **Full HTTP Path (if required)**:
+  - Salesforce Org: `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausLogo`
+  - Experience Cloud: `https://orgfarm-37c511d2f9.my.site.com/ESWNordicHausAgent1763644200189/resource/NordicHausLogo`
 - This is the full Nordic Haus logo with house icon and text
 
 **Avatar / User Icon:**
 - Click "Upload" or "Choose from Files"  
 - Select Static Resource: `NordicHausAvatarMinimal`
+- **Full HTTP Path (if required)**:
+  - Salesforce Org: `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatarMinimal`
+  - Experience Cloud: `https://orgfarm-37c511d2f9.my.site.com/ESWNordicHausAgent1763644200189/resource/NordicHausAvatarMinimal`
 - This is the minimal flat design avatar (200x200px)
 
 **Alternative Avatar Options:**
-- `NordicHausAvatar` - Circular with gradient (for profile pictures)
+- `NordicHausAvatar` - Circular with gradient
+  - URL: `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatar`
 - `NordicHausAvatarSquare` - Square with rounded corners
+  - URL: `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatarSquare`
 - `NordicHausAvatarDark` - Dark theme version
+  - URL: `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatarDark`
 
 #### Typography:
 - **Font Family**: Salesforce Sans (or Arial as fallback)
@@ -62,15 +71,23 @@ All Nordic Haus branding assets are deployed to your org:
 
 ### Logos (Full):
 - ✅ **NordicHausLogo** (`081gL000000jFisQAE`) - Full color, recommended for header
-- ✅ **NordicHausLogoWhite** - White version for dark backgrounds
-- ✅ **NordicHausLogoSalesforce** - Salesforce branded colors
-- ✅ **NordicHausIcon** - Icon only (square format)
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausLogo`
+- ✅ **NordicHausLogoWhite** (`081gL000000jFiuQAE`) - White version for dark backgrounds
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausLogoWhite`
+- ✅ **NordicHausLogoSalesforce** (`081gL000000jFitQAE`) - Salesforce branded colors
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausLogoSalesforce`
+- ✅ **NordicHausIcon** (`081gL000000jFirQAE`) - Icon only (square format)
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausIcon`
 
 ### Avatars (200x200px):
 - ✅ **NordicHausAvatar** (`081gL000000jFm5QAE`) - Circular with gradient
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatar`
 - ✅ **NordicHausAvatarMinimal** (`081gL000000jFm7QAE`) - **RECOMMENDED** for bot
-- ✅ **NordicHausAvatarSquare** - Square with rounded corners
-- ✅ **NordicHausAvatarDark** - Dark theme with border
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatarMinimal`
+- ✅ **NordicHausAvatarSquare** (`081gL000000jFm8QAE`) - Square with rounded corners
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatarSquare`
+- ✅ **NordicHausAvatarDark** (`081gL000000jFm6QAE`) - Dark theme with border
+  - 🔗 `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatarDark`
 
 ## Branding Best Practices
 
@@ -84,6 +101,39 @@ All Nordic Haus branding assets are deployed to your org:
 - **NordicHausAvatarMinimal**: Clean, simple design that works at small sizes
 - **NordicHausLogo**: Professional full logo with brand recognition
 - **Salesforce Blue (#00A1E0)**: Consistent with website and Salesforce ecosystem
+
+## Static Resource URL Formats
+
+When configuring images in Embedded Service Branding, you may need to provide the full HTTP path. Use these URL formats:
+
+### Format 1: Salesforce Org Direct (Recommended)
+```
+https://orgfarm-37c511d2f9.my.salesforce.com/resource/<StaticResourceName>
+```
+
+**Example:**
+- Logo: `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausLogo`
+- Avatar: `https://orgfarm-37c511d2f9.my.salesforce.com/resource/NordicHausAvatarMinimal`
+
+### Format 2: Experience Cloud Site
+```
+https://orgfarm-37c511d2f9.my.site.com/ESWNordicHausAgent1763644200189/resource/<StaticResourceName>
+```
+
+**Example:**
+- Logo: `https://orgfarm-37c511d2f9.my.site.com/ESWNordicHausAgent1763644200189/resource/NordicHausLogo`
+- Avatar: `https://orgfarm-37c511d2f9.my.site.com/ESWNordicHausAgent1763644200189/resource/NordicHausAvatarMinimal`
+
+### Format 3: Relative Path (Sometimes Accepted)
+```
+/resource/<StaticResourceName>
+```
+
+**Which Format to Use:**
+- ✅ **Salesforce UI Configuration**: Usually accepts Static Resource name only (`NordicHausLogo`)
+- ✅ **API/Metadata**: Use full Salesforce org URL (Format 1)
+- ✅ **Experience Cloud**: Use Experience Cloud URL (Format 2) if embedding in site
+- ✅ **Custom Code**: Use relative path (Format 3) for Visualforce/LWC
 
 ## Troubleshooting
 
