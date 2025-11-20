@@ -1,0 +1,33 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Nordic Haus Avatar - Square with rounded corners -->
+    <title>Nordic Haus Avatar Square</title>
+    <desc>Square avatar with Nordic Haus house icon for profile pictures</desc>
+    
+    <!-- Square background with gradient and rounded corners -->
+    <defs>
+        <linearGradient id="squareGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00A1E0;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0176D3;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Rounded square background -->
+    <rect width="200" height="200" rx="20" fill="url(#squareGradient)"/>
+    
+    <!-- House Icon centered and scaled -->
+    <g transform="translate(100, 100) scale(2.5)">
+        <g transform="translate(-16, -16)">
+            <!-- Base -->
+            <rect x="4" y="12" width="24" height="24" fill="#FFFFFF" rx="2" opacity="0.95"/>
+            <!-- Roof -->
+            <path d="M2 12 L16 -2 L30 12 Z" fill="#E6F4F9" opacity="0.95"/>
+            <!-- Door -->
+            <rect x="11" y="22" width="10" height="14" fill="#032D60" rx="1"/>
+            <!-- Window Left -->
+            <circle cx="9" cy="17" r="2" fill="#032D60"/>
+            <!-- Window Right -->
+            <circle cx="23" cy="17" r="2" fill="#032D60"/>
+        </g>
+    </g>
+</svg>
+

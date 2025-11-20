@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Nordic Haus Avatar - Minimal flat design -->
+    <title>Nordic Haus Avatar Minimal</title>
+    <desc>Minimal flat design avatar with Nordic colors</desc>
+    
+    <!-- Flat background -->
+    <rect width="200" height="200" rx="100" fill="#E6F4F9"/>
+    
+    <!-- House Icon centered and scaled with Nordic colors -->
+    <g transform="translate(100, 100) scale(2.8)">
+        <g transform="translate(-16, -16)">
+            <!-- Base -->
+            <rect x="4" y="12" width="24" height="24" fill="#4A5568" rx="2"/>
+            <!-- Roof -->
+            <path d="M2 12 L16 -2 L30 12 Z" fill="#C8986B"/>
+            <!-- Door -->
+            <rect x="11" y="22" width="10" height="14" fill="#00A1E0" rx="1"/>
+            <!-- Window Left -->
+            <circle cx="9" cy="17" r="2" fill="#FFFFFF"/>
+            <!-- Window Right -->
+            <circle cx="23" cy="17" r="2" fill="#FFFFFF"/>
+        </g>
+    </g>
+</svg>
+
