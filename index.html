@@ -673,34 +673,41 @@
             <div class="product-grid">
                 <!-- Product 1: Ektorp Sofa -->
                 <div class="product-card" data-category="sofas">
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&h=300&fit=crop" 
-                             alt="Ektorp Sofa" 
-                             class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Ektorp Sofa</h3>
-                        <p class="product-price">$599</p>
-                        <button class="add-to-cart-btn">
-                            Add to Cart
-                        </button>
-                    </div>
+                    <a href="products/ektorp-sofa.html" style="text-decoration: none; color: inherit;">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&h=300&fit=crop" 
+                                 alt="Ektorp Sofa" 
+                                 class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Ektorp Sofa</h3>
+                            <p class="product-price">$599</p>
+                            <button class="add-to-cart-btn" onclick="event.preventDefault(); event.stopPropagation(); alert('Added to cart!');">
+                                View Details →
+                            </button>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Product 2: Billy Bookshelf -->
                 <div class="product-card" data-category="storage">
-                    <div class="product-image-container">
-                        <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?w=400&h=300&fit=crop" 
-                             alt="Billy Bookshelf" 
-                             class="product-image">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Billy Bookshelf</h3>
-                        <p class="product-price">$79</p>
-                        <button class="add-to-cart-btn">
-                            Add to Cart
-                        </button>
-                    </div>
+                    <a href="products/billy-bookshelf.html" style="text-decoration: none; color: inherit;">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?w=400&h=300&fit=crop" 
+                                 alt="Billy Bookshelf - SALE!" 
+                                 class="product-image">
+                            <div style="position: absolute; top: 0.5rem; right: 0.5rem; background: #dc2626; color: white; padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.75rem;">25% OFF</div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Billy Bookshelf</h3>
+                            <p class="product-price" style="display: flex; align-items: center; gap: 0.5rem;">
+                                $59 <span style="text-decoration: line-through; color: #9ca3af; font-size: 1rem;">$79</span>
+                            </p>
+                            <button class="add-to-cart-btn">
+                                View Deal →
+                            </button>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Product 3: Malm Bed -->
