@@ -15,3 +15,4 @@ The logo is used in:
 
 The website includes fallback placeholders if the logo file is not found.
 
+

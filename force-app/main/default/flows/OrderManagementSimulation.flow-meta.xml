@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <description>Order Management Simulation Flow for Agentforce Actions - Handles order status queries, returns, refunds, and split deliveries</description>
+    <environments>Default</environments>
+    <interviewLabel>Order Management Simulation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Order Management Simulation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>InvocableProcess</processType>
+    <startElementReference>Start</startElementReference>
+    <status>Active</status>
+    <variables>
+        <name>contactIdentifier</name>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>String</objectType>
+        <description>Contact email address or identification number</description>
+    </variables>
+    <variables>
+        <name>actionTag</name>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>String</objectType>
+        <description>Action tag: order_status_query, order_return_action, order_refund_query, order_split_delivery_action, order_refund_action</description>
+    </variables>
+    <variables>
+        <name>result</name>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>String</objectType>
+        <description>Result string returned to Agentforce action</description>
+    </variables>
+    <variables>
+        <name>orderNumber</name>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>String</objectType>
+    </variables>
+    <variables>
+        <name>orderStatus</name>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>String</objectType>
+    </variables>
+    <variables>
+        <name>orderAmount</name>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>String</objectType>
+    </variables>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>InitializeOrderData</targetReference>
+        </connector>
+        <object>Start</object>
+        <label>Start</label>
+    </start>
+    <assignments>
+        <name>InitializeOrderData</name>
+        <locationX>50</locationX>
+        <locationY>100</locationY>
+        <connector>
+            <targetReference>Decision</targetReference>
+        </connector>
+        <assignmentItems>
+            <assignToReference>orderNumber</assignToReference>
+            <value>
+                <stringValue>ORD-{!$Flow.CurrentDateTime}-NH</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>orderStatus</assignToReference>
+            <value>
+                <stringValue>Processing</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>orderAmount</assignToReference>
+            <value>
+                <stringValue>599.00</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>OrderStatusQuery</name>
+        <locationX>50</locationX>
+        <locationY>300</locationY>
+        <assignmentItems>
+            <assignToReference>result</assignToReference>
+            <value>
+                <stringValue>ORDER STATUS QUERY RESULT
+Contact Identifier: {!contactIdentifier}
+Order Number: {!orderNumber}
+Order Status: {!orderStatus}
+Order Amount: ${!orderAmount}
+Current Status Details: Your order is currently in {!orderStatus} status. The order was placed on {!$Flow.CurrentDateTime} and is expected to be delivered within 5-7 business days. You can track your order using order number {!orderNumber}. For any questions, please contact our support team.
+Last Updated: {!$Flow.CurrentDateTime}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>OrderReturnAction</name>
+        <locationX>50</locationX>
+        <locationY>400</locationY>
+        <assignmentItems>
+            <assignToReference>result</assignToReference>
+            <value>
+                <stringValue>ORDER RETURN ACTION RESULT
+Contact Identifier: {!contactIdentifier}
+Order Number: {!orderNumber}
+Return Status: INITIATED
+Return Request ID: RET-{!$Flow.CurrentDateTime}
+Action Taken: Return request has been successfully initiated for order {!orderNumber}. Our returns team will process your request within 24-48 hours. You will receive a return shipping label via email. Items must be returned in original condition within 30 days of purchase. Once we receive and inspect the returned items, a refund will be processed to your original payment method within 5-7 business days.
+Return Instructions: Please package the items securely in their original packaging. Use the provided return label and drop off at any authorized shipping location. Keep your tracking number for reference.
+Initiated At: {!$Flow.CurrentDateTime}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>OrderRefundQuery</name>
+        <locationX>50</locationX>
+        <locationY>500</locationY>
+        <assignmentItems>
+            <assignToReference>result</assignToReference>
+            <value>
+                <stringValue>ORDER REFUND QUERY RESULT
+Contact Identifier: {!contactIdentifier}
+Order Number: {!orderNumber}
+Refund Status: ELIGIBLE
+Eligible Refund Amount: ${!orderAmount}
+Refund Details: Based on your order history, you are eligible for a full refund of ${!orderAmount} for order {!orderNumber}. The refund will be processed to your original payment method. Processing time is typically 5-7 business days after return items are received and inspected. If you have already initiated a return, your refund will be processed automatically once we receive the items.
+Refund Policy: Full refunds are available for items returned within 30 days in original condition. Partial refunds may apply for items not in original condition or missing components.
+Query Date: {!$Flow.CurrentDateTime}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>OrderSplitDeliveryAction</name>
+        <locationX>50</locationX>
+        <locationY>600</locationY>
+        <assignmentItems>
+            <assignToReference>result</assignToReference>
+            <value>
+                <stringValue>ORDER SPLIT DELIVERY ACTION RESULT
+Contact Identifier: {!contactIdentifier}
+Order Number: {!orderNumber}
+Split Delivery Status: CONFIGURED
+Delivery Configuration: Your order {!orderNumber} has been successfully split into multiple shipments to optimize delivery times.
+Shipment 1: Contains 2 items - Ektorp Sofa. Estimated delivery: 5 business days from {!$Flow.CurrentDateTime}. Tracking: TRK-{!orderNumber}-001
+Shipment 2: Contains 1 item - Billy Bookshelf. Estimated delivery: 3 business days from {!$Flow.CurrentDateTime}. Tracking: TRK-{!orderNumber}-002
+Total Items: 3 items split across 2 shipments
+Delivery Notes: Each shipment will be sent separately to ensure faster delivery of available items. You will receive separate tracking information for each shipment. All shipments will be delivered to the address on file.
+Action Completed: {!$Flow.CurrentDateTime}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>OrderRefundAction</name>
+        <locationX>50</locationX>
+        <locationY>700</locationY>
+        <assignmentItems>
+            <assignToReference>result</assignToReference>
+            <value>
+                <stringValue>ORDER REFUND ACTION RESULT
+Contact Identifier: {!contactIdentifier}
+Order Number: {!orderNumber}
+Refund Action: PROCESSED
+Refund Amount: ${!orderAmount}
+Refund Transaction ID: REF-{!$Flow.CurrentDateTime}
+Refund Details: Your refund of ${!orderAmount} for order {!orderNumber} has been successfully processed. The funds will be credited back to your original payment method within 5-7 business days. You will receive an email confirmation once the refund is complete.
+Refund Method: Original payment method (Credit Card ending in ****1234)
+Processing Status: COMPLETED
+Refund Initiated: {!$Flow.CurrentDateTime}
+Expected Credit Date: 7 business days from {!$Flow.CurrentDateTime}
+Confirmation Number: CNF-{!orderNumber}-{!$Flow.CurrentDateTime}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>DefaultAssignment</name>
+        <locationX>50</locationX>
+        <locationY>800</locationY>
+        <assignmentItems>
+            <assignToReference>result</assignToReference>
+            <value>
+                <stringValue>ERROR: Invalid action tag provided. Supported actions: order_status_query, order_return_action, order_refund_query, order_split_delivery_action, order_refund_action. Provided action: {!actionTag}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+</Flow>
+    <decisions>
+        <name>Decision</name>
+        <locationX>50</locationX>
+        <locationY>200</locationY>
+        <defaultConnector>
+            <targetReference>DefaultAssignment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>order_status_query</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>actionTag</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>order_status_query</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OrderStatusQuery</targetReference>
+            </connector>
+        </rules>
+        <rules>
+            <name>order_return_action</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>actionTag</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>order_return_action</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OrderReturnAction</targetReference>
+            </connector>
+        </rules>
+        <rules>
+            <name>order_refund_query</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>actionTag</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>order_refund_query</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OrderRefundQuery</targetReference>
+            </connector>
+        </rules>
+        <rules>
+            <name>order_split_delivery_action</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>actionTag</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>order_split_delivery_action</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OrderSplitDeliveryAction</targetReference>
+            </connector>
+        </rules>
+        <rules>
+            <name>order_refund_action</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>actionTag</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>order_refund_action</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>OrderRefundAction</targetReference>
+            </connector>
+        </rules>
+    </decisions>
+</Flow>

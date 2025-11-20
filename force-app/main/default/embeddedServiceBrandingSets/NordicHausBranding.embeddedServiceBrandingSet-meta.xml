@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmbeddedServiceBrandingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentUserImage>NordicHausAvatar</agentUserImage>
+    <backgroundColor>#E6F4F9</backgroundColor>
+    <companyLogoImage>NordicHausLogo</companyLogoImage>
+    <contrastColor>#FFFFFF</contrastColor>
+    <fontSize>16</fontSize>
+    <masterLabel>Nordic Haus Branding Set</masterLabel>
+    <primaryColor>#00A1E0</primaryColor>
+    <secondaryColor>#0176D3</secondaryColor>
+    <userBrandingImage>NordicHausAvatarMinimal</userBrandingImage>
+</EmbeddedServiceBrandingSet>
+
