@@ -5,45 +5,579 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="NORDIC HAUS - Functional furniture and home goods inspired by Nordic design. Discover minimalist, affordable furniture for your perfect space.">
     <title>NORDIC HAUS | Functional Furniture & Home Goods</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'salesforce-blue': '#00A1E0',
-                        'salesforce-dark-blue': '#0176D3',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        /* Custom styles for smooth animations and Nordic aesthetic */
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #111827;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Header Styles */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+        
+        .logo-container {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-link:hover .logo-svg {
+            transform: scale(1.05);
+        }
+        
+        .logo-svg {
+            height: 3.5rem;
+            width: auto;
+            transition: transform 0.2s;
+        }
+        
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: #374151;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+            color: #00A1E0;
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            color: #374151;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .mobile-menu {
+            display: none;
+            padding-bottom: 1rem;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 0.5rem 0;
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .mobile-menu a:hover {
+            color: #00A1E0;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(to bottom right, #E6F4F9, #f9fafb);
+            padding: 4rem 0;
+        }
+        
+        .hero-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent);
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-content {
+            padding: 2rem 1.5rem;
+        }
+        
+        .hero-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-text {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 36rem;
+        }
+        
+        .hero-button {
+            display: inline-block;
+            background-color: #00A1E0;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-button:hover {
+            background-color: #0176D3;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Product Catalog Section */
+        .catalog-section {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            background-color: #f3f4f6;
+            color: #374151;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn.active {
+            background-color: #00A1E0;
+            color: white;
+        }
+        
+        .filter-btn:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .filter-btn.active:hover {
+            background-color: #0176D3;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid #f3f4f6;
+            transition: all 0.3s;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            background-color: #f9fafb;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 16rem;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00A1E0;
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart-btn {
+            width: 100%;
+            background-color: #00A1E0;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #0176D3;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 0;
+            background-color: #f9fafb;
+        }
+        
+        .faq-container {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            border: 1px solid #f3f4f6;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-btn {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .accordion-btn:hover {
+            background-color: #f9fafb;
+        }
+        
+        .accordion-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        .accordion-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #4b5563;
+            transition: transform 0.2s;
+        }
+        
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
+        
         .accordion-content.open {
             max-height: 500px;
             transition: max-height 0.3s ease-in;
         }
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
+        
+        .accordion-text {
+            padding: 0 2rem 1.25rem 2rem;
+            color: #374151;
+            line-height: 1.625;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            text-align: center;
+        }
+        
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo {
+            height: 6rem;
+            width: auto;
+            opacity: 0.9;
+        }
+        
+        .footer-text {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+        
+        .copyright {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        /* Chat Button */
+        .chat-toggle {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: #00A1E0;
+            color: white;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .chat-toggle:hover {
+            background-color: #0176D3;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .chat-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            .hero-section {
+                padding: 6rem 0;
+            }
+            
+            .catalog-section {
+                padding: 4rem 0;
+            }
+            
+            .faq-section {
+                padding: 4rem 0;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .nav-container {
+                height: 5rem;
+            }
+            
+            .logo-svg {
+                height: 4rem;
+            }
+            
+            .nav-menu {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .hero-image {
+                height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-text {
+                font-size: 1.25rem;
+            }
+            
+            .hero-button {
+                padding: 1rem 2.5rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .accordion-btn {
+                padding: 1.25rem 2rem;
+            }
+            
+            .accordion-text {
+                padding: 0 2rem 1.25rem 2rem;
+            }
+            
+            .chat-toggle {
+                width: 4rem;
+                height: 4rem;
+            }
+            
+            .chat-icon {
+                width: 1.875rem;
+                height: 1.875rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            
+            .hero-section {
+                padding: 8rem 0;
+            }
+            
+            .hero-image {
+                height: 600px;
+            }
+            
+            .hero-title {
+                font-size: 3.75rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .catalog-section {
+                padding: 5rem 0;
+            }
+            
+            .faq-section {
+                padding: 5rem 0;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
     </style>
 </head>
-<body class="bg-white text-gray-900 font-sans antialiased">
+<body>
     <!-- Sticky Header -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 md:h-20">
+    <header>
+        <nav>
+            <div class="nav-container">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="flex items-center group">
-                        <svg class="h-14 md:h-16 w-auto transition-transform duration-200 group-hover:scale-105" viewBox="0 0 180 60" xmlns="http://www.w3.org/2000/svg">
+                <div class="logo-container">
+                    <a href="#" class="logo-link">
+                        <svg class="logo-svg" viewBox="0 0 180 60" xmlns="http://www.w3.org/2000/svg">
                             <!-- House Icon with Nordic colors -->
                             <g>
                                 <!-- Base -->
@@ -67,45 +601,45 @@
                     </a>
                 </div>
                 <!-- Navigation -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-[#00A1E0] transition-colors duration-200 font-medium">Home</a>
-                    <a href="#catalog" class="text-gray-700 hover:text-[#00A1E0] transition-colors duration-200 font-medium">Catalog</a>
-                    <a href="#faq" class="text-gray-700 hover:text-[#00A1E0] transition-colors duration-200 font-medium">FAQ</a>
-                    <a href="#support" class="text-gray-700 hover:text-[#00A1E0] transition-colors duration-200 font-medium">Support</a>
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#catalog" class="nav-link">Catalog</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="#support" class="nav-link">Support</a>
                 </div>
                 <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="mobileMenuBtn" class="mobile-menu-btn">
+                    <svg class="chat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden md:hidden pb-4 space-y-2">
-                <a href="#home" class="block py-2 text-gray-700 hover:text-[#00A1E0] transition-colors">Home</a>
-                <a href="#catalog" class="block py-2 text-gray-700 hover:text-[#00A1E0] transition-colors">Catalog</a>
-                <a href="#faq" class="block py-2 text-gray-700 hover:text-[#00A1E0] transition-colors">FAQ</a>
-                <a href="#support" class="block py-2 text-gray-700 hover:text-[#00A1E0] transition-colors">Support</a>
+            <div id="mobileMenu" class="mobile-menu">
+                <a href="#home">Home</a>
+                <a href="#catalog">Catalog</a>
+                <a href="#faq">FAQ</a>
+                <a href="#support">Support</a>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative bg-gradient-to-br from-[#E6F4F9] to-gray-50 py-16 md:py-24 lg:py-32">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative overflow-hidden rounded-2xl shadow-lg">
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-container">
                 <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
                      alt="Professional business technology" 
-                     class="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent flex items-center">
-                    <div class="px-6 md:px-12 lg:px-16 py-8">
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
+                     class="hero-image">
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
                             Dublin Project R6 - FDE 4ever
                         </h1>
-                        <p class="text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-xl">
+                        <p class="hero-text">
                             Discover functional, minimalist furniture designed for modern living.
                         </p>
-                        <a href="#catalog" class="inline-block bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold px-8 py-3 md:px-10 md:py-4 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <a href="#catalog" class="hero-button">
                             Shop the Latest Collection
                         </a>
                     </div>
@@ -115,167 +649,167 @@
     </section>
 
     <!-- Product Catalog Section -->
-    <section id="catalog" class="py-12 md:py-16 lg:py-20 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 md:mb-12 text-center">Our Collection</h2>
+    <section id="catalog" class="catalog-section">
+        <div class="container">
+            <h2 class="section-title">Our Collection</h2>
             
             <!-- Filter Bar -->
-            <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12">
-                <button class="filter-btn active px-6 py-2 rounded-full bg-[#00A1E0] text-white font-medium transition-all duration-200 hover:bg-[#0176D3]" data-category="all">
+            <div class="filter-bar">
+                <button class="filter-btn active" data-category="all">
                     All
                 </button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-200" data-category="sofas">
+                <button class="filter-btn" data-category="sofas">
                     Sofas
                 </button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-200" data-category="storage">
+                <button class="filter-btn" data-category="storage">
                     Storage
                 </button>
-                <button class="filter-btn px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-medium transition-all duration-200 hover:bg-gray-200" data-category="tables">
+                <button class="filter-btn" data-category="tables">
                     Tables
                 </button>
             </div>
 
             <!-- Product Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+            <div class="product-grid">
                 <!-- Product 1: Ektorp Sofa -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="sofas">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="sofas">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=400&h=300&fit=crop" 
                              alt="Ektorp Sofa" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Ektorp Sofa</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$599</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Ektorp Sofa</h3>
+                        <p class="product-price">$599</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 2: Billy Bookshelf -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="storage">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="storage">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?w=400&h=300&fit=crop" 
                              alt="Billy Bookshelf" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Billy Bookshelf</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$79</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Billy Bookshelf</h3>
+                        <p class="product-price">$79</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 3: Malm Bed -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="tables">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="tables">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=400&h=300&fit=crop" 
                              alt="Malm Bed" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Malm Bed</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$299</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Malm Bed</h3>
+                        <p class="product-price">$299</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 4: Kivik Sectional -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="sofas">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="sofas">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop" 
                              alt="Kivik Sectional Sofa" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Kivik Sectional</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$899</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Kivik Sectional</h3>
+                        <p class="product-price">$899</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 5: Grönlid Corner Sofa -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="sofas">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="sofas">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&h=300&fit=crop" 
                              alt="Grönlid Corner Sofa" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Grönlid Corner Sofa</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$749</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Grönlid Corner Sofa</h3>
+                        <p class="product-price">$749</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 6: Kallax Shelf Unit -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="storage">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="storage">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=400&h=300&fit=crop" 
                              alt="Kallax Shelf Unit" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Kallax Shelf Unit</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$139</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Kallax Shelf Unit</h3>
+                        <p class="product-price">$139</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 7: Hemnes Cabinet -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="storage">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="storage">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=300&fit=crop" 
                              alt="Hemnes Cabinet" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Hemnes Cabinet</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$249</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Hemnes Cabinet</h3>
+                        <p class="product-price">$249</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 8: Lack Coffee Table -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="tables">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="tables">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=400&h=300&fit=crop" 
                              alt="Lack Coffee Table" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Lack Coffee Table</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$39</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Lack Coffee Table</h3>
+                        <p class="product-price">$39</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
                 </div>
 
                 <!-- Product 9: Lisabo Dining Table -->
-                <div class="product-card group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100" data-category="tables">
-                    <div class="relative overflow-hidden bg-gray-50">
+                <div class="product-card" data-category="tables">
+                    <div class="product-image-container">
                         <img src="https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=400&h=300&fit=crop" 
                              alt="Lisabo Dining Table" 
-                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                             class="product-image">
                     </div>
-                    <div class="p-5 md:p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Lisabo Dining Table</h3>
-                        <p class="text-2xl font-bold text-[#00A1E0] mb-4">$329</p>
-                        <button class="w-full bg-[#00A1E0] hover:bg-[#0176D3] text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 shadow-sm hover:shadow-md">
+                    <div class="product-info">
+                        <h3 class="product-name">Lisabo Dining Table</h3>
+                        <p class="product-price">$329</p>
+                        <button class="add-to-cart-btn">
                             Add to Cart
                         </button>
                     </div>
@@ -285,66 +819,66 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-12 md:py-16 lg:py-20 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 md:mb-12 text-center">Frequently Asked Questions</h2>
+    <section id="faq" class="faq-section">
+        <div class="faq-container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
             
-            <div class="space-y-4">
+            <div>
                 <!-- FAQ Item 1 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <button class="accordion-btn w-full px-6 py-4 md:px-8 md:py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-                        <span class="text-lg md:text-xl font-semibold text-gray-900">What are your delivery times?</span>
-                        <svg class="accordion-icon w-5 h-5 text-gray-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        <span class="accordion-title">What are your delivery times?</span>
+                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="accordion-content">
-                        <div class="px-6 md:px-8 pb-4 md:pb-5 text-gray-700 leading-relaxed">
+                        <div class="accordion-text">
                             Standard delivery typically takes 5-7 business days. Express delivery options are available for an additional fee, with delivery in 2-3 business days. You'll receive a tracking number once your order ships.
                         </div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <button class="accordion-btn w-full px-6 py-4 md:px-8 md:py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-                        <span class="text-lg md:text-xl font-semibold text-gray-900">What is your returns policy?</span>
-                        <svg class="accordion-icon w-5 h-5 text-gray-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        <span class="accordion-title">What is your returns policy?</span>
+                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="accordion-content">
-                        <div class="px-6 md:px-8 pb-4 md:pb-5 text-gray-700 leading-relaxed">
+                        <div class="accordion-text">
                             We offer a 30-day return policy on all items in their original condition. Items must be unassembled and in their original packaging. Return shipping is free for items over $100. Please contact our support team to initiate a return.
                         </div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 3 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <button class="accordion-btn w-full px-6 py-4 md:px-8 md:py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-                        <span class="text-lg md:text-xl font-semibold text-gray-900">How difficult is assembly?</span>
-                        <svg class="accordion-icon w-5 h-5 text-gray-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        <span class="accordion-title">How difficult is assembly?</span>
+                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="accordion-content">
-                        <div class="px-6 md:px-8 pb-4 md:pb-5 text-gray-700 leading-relaxed">
+                        <div class="accordion-text">
                             Most of our furniture is designed for easy self-assembly with clear, illustrated instructions. Assembly typically takes 30-60 minutes for most items. We also offer professional assembly services in select areas for an additional fee.
                         </div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                    <button class="accordion-btn w-full px-6 py-4 md:px-8 md:py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
-                        <span class="text-lg md:text-xl font-semibold text-gray-900">Do you offer warranty on your products?</span>
-                        <svg class="accordion-icon w-5 h-5 text-gray-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="faq-item">
+                    <button class="accordion-btn">
+                        <span class="accordion-title">Do you offer warranty on your products?</span>
+                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="accordion-content">
-                        <div class="px-6 md:px-8 pb-4 md:pb-5 text-gray-700 leading-relaxed">
+                        <div class="accordion-text">
                             Yes, all our products come with a comprehensive warranty. Furniture items are covered by a 10-year limited warranty against manufacturing defects. Upholstery and textiles have a 2-year warranty. Please keep your receipt for warranty claims.
                         </div>
                     </div>
@@ -354,11 +888,11 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-8 md:py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="flex items-center justify-center mb-6">
-                    <svg class="h-24 w-auto opacity-90" viewBox="0 0 180 60" xmlns="http://www.w3.org/2000/svg">
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo-container">
+                    <svg class="footer-logo" viewBox="0 0 180 60" xmlns="http://www.w3.org/2000/svg">
                         <!-- House Icon with Nordic colors -->
                         <g>
                             <!-- Base -->
@@ -380,8 +914,8 @@
                         </text>
                     </svg>
                 </div>
-                <p class="text-gray-400 mb-6">Functional furniture for modern living</p>
-                <p class="text-sm text-gray-500">&copy; 2024 NORDIC HAUS. All rights reserved.</p>
+                <p class="footer-text">Functional furniture for modern living</p>
+                <p class="copyright">&copy; 2024 NORDIC HAUS. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -424,7 +958,7 @@
         const mobileMenu = document.getElementById('mobileMenu');
         
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
         });
 
         // FAQ Accordion
@@ -469,11 +1003,9 @@
                 
                 // Update active button
                 filterBtns.forEach(b => {
-                    b.classList.remove('active', 'bg-[#00A1E0]', 'text-white');
-                    b.classList.add('bg-gray-100', 'text-gray-700');
+                    b.classList.remove('active');
                 });
-                btn.classList.add('active', 'bg-[#00A1E0]', 'text-white');
-                btn.classList.remove('bg-gray-100', 'text-gray-700');
+                btn.classList.add('active');
                 
                 // Filter products
                 productCards.forEach(card => {
@@ -506,7 +1038,7 @@
                         block: 'start'
                     });
                     // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('active');
                 }
             });
         });
