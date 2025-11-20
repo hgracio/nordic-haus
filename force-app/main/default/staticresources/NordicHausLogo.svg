@@ -1,0 +1,30 @@
+<svg class="h-14 md:h-16 w-auto" viewBox="0 0 180 60" xmlns="http://www.w3.org/2000/svg">
+    <!-- Nordic Haus Logo - Full Color Version -->
+    <title>Nordic Haus Logo</title>
+    <desc>Modern Nordic-inspired house logo with minimalist design</desc>
+    
+    <!-- House Icon with Nordic colors -->
+    <g id="house-icon">
+        <!-- Base -->
+        <rect x="8" y="28" width="24" height="24" fill="#4A5568" rx="2"/>
+        <!-- Roof -->
+        <path d="M6 28 L20 14 L34 28 Z" fill="#C8986B"/>
+        <!-- Door -->
+        <rect x="15" y="38" width="10" height="14" fill="#00A1E0" rx="1"/>
+        <!-- Window Left -->
+        <circle cx="13" cy="33" r="2" fill="#E6F4F9"/>
+        <!-- Window Right -->
+        <circle cx="27" cy="33" r="2" fill="#E6F4F9"/>
+    </g>
+    
+    <!-- Text -->
+    <g id="logo-text">
+        <text x="44" y="32" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#4A5568">
+            NORDIC
+        </text>
+        <text x="44" y="48" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="700" fill="#C8986B">
+            HAUS
+        </text>
+    </g>
+</svg>
+

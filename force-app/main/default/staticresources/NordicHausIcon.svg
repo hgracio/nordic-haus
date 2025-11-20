@@ -1,0 +1,20 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Nordic Haus Icon Only - Square Format -->
+    <title>Nordic Haus Icon</title>
+    <desc>House icon from Nordic Haus logo, optimized for square format</desc>
+    
+    <!-- House Icon with Nordic colors -->
+    <g id="house-icon-square">
+        <!-- Base -->
+        <rect x="8" y="16" width="24" height="24" fill="#4A5568" rx="2"/>
+        <!-- Roof -->
+        <path d="M6 16 L20 2 L34 16 Z" fill="#C8986B"/>
+        <!-- Door -->
+        <rect x="15" y="26" width="10" height="14" fill="#00A1E0" rx="1"/>
+        <!-- Window Left -->
+        <circle cx="13" cy="21" r="2" fill="#E6F4F9"/>
+        <!-- Window Right -->
+        <circle cx="27" cy="21" r="2" fill="#E6F4F9"/>
+    </g>
+</svg>
+

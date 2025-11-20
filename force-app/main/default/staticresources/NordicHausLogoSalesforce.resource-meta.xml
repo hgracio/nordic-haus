@@ -2,7 +2,6 @@
 <StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
     <cacheControl>Public</cacheControl>
     <contentType>image/svg+xml</contentType>
-    <description>Nordic Haus company logo - Full color version for light backgrounds</description>
+    <description>Nordic Haus logo - Salesforce branded color scheme version</description>
 </StaticResource>
-
 

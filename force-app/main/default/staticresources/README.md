@@ -18,3 +18,4 @@ The logo will be accessible in Salesforce as:
 - Static Resource Name: `NordicHausLogo`
 - URL: `/resource/NordicHausLogo`
 
+
