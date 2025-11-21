@@ -573,6 +573,238 @@
                 grid-template-columns: repeat(4, 1fr);
             }
         }
+        
+        /* Custom Enhanced Chat Widget */
+        .custom-chat-widget {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            width: 380px;
+            max-width: calc(100vw - 4rem);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .custom-chat-widget.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .custom-chat-header {
+            background: linear-gradient(135deg, #00A1E0 0%, #0077B5 100%);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .chat-icon {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+        
+        .chat-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        
+        .custom-chat-content {
+            padding: 1.5rem;
+        }
+        
+        .chat-welcome {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .chat-subtitle {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .chat-quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .chat-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        
+        .chat-action-btn:hover {
+            background: #f9fafb;
+            border-color: #00A1E0;
+            color: #00A1E0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 161, 224, 0.15);
+        }
+        
+        .chat-action-btn:active {
+            transform: translateY(0);
+        }
+        
+        .action-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        
+        .chat-input-container {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 0.9375rem;
+            color: #111827;
+            transition: all 0.2s ease;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: #00A1E0;
+            box-shadow: 0 0 0 3px rgba(0, 161, 224, 0.1);
+        }
+        
+        .chat-input::placeholder {
+            color: #9ca3af;
+        }
+        
+        .chat-send-btn {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #00A1E0 0%, #0077B5 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 161, 224, 0.3);
+        }
+        
+        .chat-send-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .chat-send-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Agentforce Logo Animation */
+        @keyframes agentforce-ellipse-pulse {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            12.5% {
+                transform: translate(4px, 0) scale(1.08);
+            }
+            25% {
+                transform: translate(5px, -2px) scale(1.15);
+            }
+            37.5% {
+                transform: translate(3px, -3px) scale(1.18);
+            }
+            50% {
+                transform: translate(0, -4px) scale(1.2);
+            }
+            62.5% {
+                transform: translate(-3px, -3px) scale(1.18);
+            }
+            75% {
+                transform: translate(-5px, -2px) scale(1.15);
+            }
+            87.5% {
+                transform: translate(-4px, 0) scale(1.08);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+        
+        @keyframes agentforce-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.9;
+            }
+        }
+        
+        .agentforce-logo {
+            animation: agentforce-pulse 2s ease-in-out infinite;
+        }
+        
+        /* Responsive Design for Custom Chat */
+        @media (max-width: 768px) {
+            .custom-chat-widget {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+                width: auto;
+                max-width: none;
+            }
+            
+            .custom-chat-header {
+                padding: 1rem 1.25rem;
+            }
+            
+            .custom-chat-content {
+                padding: 1.25rem;
+            }
+            
+            .chat-welcome {
+                font-size: 1rem;
+            }
+            
+            .chat-action-btn {
+                padding: 0.875rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -934,6 +1166,74 @@
         </div>
     </footer>
 
+    <!-- Custom Enhanced Chat Widget -->
+    <div id="customChatWidget" class="custom-chat-widget">
+        <div class="custom-chat-header">
+            <!-- Minimalist Nordic Haus Logo Icon -->
+            <svg class="chat-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <!-- House Base -->
+                    <rect x="10" y="18" width="20" height="20" fill="white" rx="1.5"/>
+                    <!-- Roof -->
+                    <path d="M8 18 L20 8 L32 18 Z" fill="#C8986B"/>
+                    <!-- Door -->
+                    <rect x="16" y="28" width="8" height="10" fill="#00A1E0" rx="0.5"/>
+                    <!-- Windows -->
+                    <circle cx="14" cy="23" r="1.5" fill="#4A5568"/>
+                    <circle cx="26" cy="23" r="1.5" fill="#4A5568"/>
+                </g>
+            </svg>
+            <span class="chat-title">Home Genie</span>
+            <img src="https://cdn.prod.website-files.com/654925f7aa6b1fc838bfd4d3/673379d676a757237c23b6e6_Agentforce.png" 
+                 alt="Agentforce" 
+                 class="agentforce-header-logo" 
+                 style="width: 48px; height: 48px; margin-left: auto;">
+        </div>
+        <div class="custom-chat-content">
+            <p class="chat-welcome">
+                Welcome to our AI Home Advisor Agent, powered by Agentforce
+                <img src="https://cdn.prod.website-files.com/654925f7aa6b1fc838bfd4d3/673379d676a757237c23b6e6_Agentforce.png" 
+                     alt="Agentforce" 
+                     class="agentforce-logo" 
+                     style="width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-left: 4px;">
+            </p>
+            <p class="chat-subtitle">Please select the menu or enter the message to get started.</p>
+            
+            <!-- Quick Action Buttons -->
+            <div class="chat-quick-actions">
+                <button class="chat-action-btn" data-message="Help with a product">
+                    <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="currentColor"/>
+                        <path d="M14 17H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/>
+                    </svg>
+                    Help with a product
+                </button>
+                <button class="chat-action-btn" data-message="Help with an order">
+                    <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-.2-3.4l.03.12.9-1.63C8.5 12.32 9.23 12 10 12h4.54c.75 0 1.41.41 1.75 1.03l3.58 6.49c.37.66-.11 1.48-.87 1.48H5.21l-.94-2H1V4c0-1.1.9-2 2-2h1c1.1 0 2 .9 2 2v13h13.5l-3.7-6.73L10 10.27l-3.2 4.33z" fill="currentColor"/>
+                    </svg>
+                    Help with an order
+                </button>
+                <button class="chat-action-btn" data-message="Help with a design idea">
+                    <svg class="action-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="currentColor"/>
+                    </svg>
+                    Help with a design idea
+                </button>
+            </div>
+            
+            <!-- Custom Text Input -->
+            <div class="chat-input-container">
+                <input type="text" id="customChatInput" class="chat-input" placeholder="Type your message..." />
+                <button id="customChatSendBtn" class="chat-send-btn">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Salesforce Embedded Service - Agentforce Bot -->
     <style type='text/css'>
         .embeddedServiceHelpButton .helpButton .uiButton {
@@ -946,9 +1246,14 @@
     </style>
 
     <script type='text/javascript'>
+        // Custom Chat Widget Variables
+        let isAgentforceReady = false;
+        
         function initEmbeddedMessaging() {
             try {
-                embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+                // Hide the default Salesforce chat button
+                embeddedservice_bootstrap.settings.language = 'en_US';
+                embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
 
                 embeddedservice_bootstrap.init(
                     '00DgL00000Etw1h',
@@ -961,7 +1266,86 @@
             } catch (err) {
                 console.error('Error loading Embedded Messaging: ', err);
             }
-        };
+        }
+        
+        // Show custom chat widget
+        function showCustomChat() {
+            const widget = document.getElementById('customChatWidget');
+            if (widget) {
+                widget.classList.remove('hidden');
+            }
+        }
+        
+        // Hide custom chat widget
+        function hideCustomChat() {
+            const widget = document.getElementById('customChatWidget');
+            if (widget) {
+                widget.classList.add('hidden');
+            }
+        }
+        
+        // Launch Agentforce chat with a message
+        function launchChatWithMessage(message) {
+            if (!isAgentforceReady) {
+                console.error('Agentforce is not ready yet');
+                return;
+            }
+            
+            try {
+                // Hide custom chat widget
+                hideCustomChat();
+                
+                // Launch the Agentforce chat
+                embeddedservice_bootstrap.utilAPI.launchChat();
+                
+                // Wait for agent to join (2 seconds) then send the message
+                setTimeout(() => {
+                    embeddedservice_bootstrap.utilAPI.sendTextMessage(message);
+                }, 2000);
+            } catch (err) {
+                console.error('Error launching chat:', err);
+                // Show custom chat again if there's an error
+                showCustomChat();
+            }
+        }
+        
+        // Event Listeners for Agentforce lifecycle
+        
+        // Fires when Agentforce is ready
+        window.addEventListener('onEmbeddedMessagingReady', function(event) {
+            console.log('Agentforce is ready');
+            isAgentforceReady = true;
+            showCustomChat();
+        });
+        
+        // Fires when the chat button is created
+        window.addEventListener('onEmbeddedMessagingButtonCreated', function(event) {
+            console.log('Chat button created');
+            showCustomChat();
+        });
+        
+        // Fires when conversation is opened
+        window.addEventListener('onEmbeddedMessagingConversationOpened', function(event) {
+            console.log('Conversation opened');
+            hideCustomChat();
+        });
+        
+        // Fires when chat window is closed
+        window.addEventListener('onEmbeddedMessagingWindowClosed', function(event) {
+            console.log('Chat window closed');
+            showCustomChat();
+            // Clear the input field
+            const input = document.getElementById('customChatInput');
+            if (input) {
+                input.value = '';
+            }
+        });
+        
+        // Fires when conversation starts
+        window.addEventListener('onEmbeddedMessagingConversationStarted', function(event) {
+            console.log('Conversation started:', event.detail);
+            hideCustomChat();
+        });
     </script>
     <script type='text/javascript' src='https://orgfarm-37c511d2f9.my.site.com/ESWNordicHaus1763655527384/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
@@ -1063,6 +1447,42 @@
             card.style.opacity = '1';
             card.style.transform = 'scale(1)';
         });
+
+        // Custom Chat Widget Event Handlers
+        
+        // Handle quick action button clicks
+        document.querySelectorAll('.chat-action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const message = this.getAttribute('data-message');
+                console.log('Quick action clicked:', message);
+                launchChatWithMessage(message);
+            });
+        });
+        
+        // Handle custom send button click
+        const sendBtn = document.getElementById('customChatSendBtn');
+        const chatInput = document.getElementById('customChatInput');
+        
+        if (sendBtn && chatInput) {
+            sendBtn.addEventListener('click', function() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    console.log('Sending custom message:', message);
+                    launchChatWithMessage(message);
+                }
+            });
+            
+            // Handle Enter key in input field
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const message = chatInput.value.trim();
+                    if (message) {
+                        console.log('Sending custom message (Enter key):', message);
+                        launchChatWithMessage(message);
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
