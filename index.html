@@ -1236,12 +1236,181 @@
 
     <!-- Salesforce Embedded Service - Agentforce Bot -->
     <style type='text/css'>
+        /* Chat Button (hidden) */
         .embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #00A1E0;
-            font-family: "Arial", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
         .embeddedServiceHelpButton .helpButton .uiButton:focus {
             outline: 1px solid #00A1E0;
+        }
+        
+        /* === Agentforce Chat Window - Home Genie Branding === */
+        
+        /* Main Chat Container */
+        .embeddedMessagingFrame,
+        embeddedservice-chat-header {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
+        
+        /* Chat Window Frame */
+        embeddedservice-chat-minimized-default-ui,
+        embeddedservice-chat-window {
+            border-radius: 16px !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.1) !important;
+            overflow: hidden !important;
+        }
+        
+        /* Chat Header - Match Home Genie Gradient */
+        embeddedservice-chat-header,
+        .embeddedServiceLiveAgentStateChat .embeddedServiceLiveAgentStateHeader,
+        .slds-chat-header {
+            background: linear-gradient(135deg, #00A1E0 0%, #0077B5 100%) !important;
+            border-radius: 16px 16px 0 0 !important;
+            padding: 1.25rem 1.5rem !important;
+        }
+        
+        /* Header Title */
+        embeddedservice-chat-header h2,
+        .embeddedServiceLiveAgentStateHeader .headerText,
+        .slds-chat-header__title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            font-size: 1.125rem !important;
+            font-weight: 600 !important;
+            color: white !important;
+            letter-spacing: -0.01em !important;
+        }
+        
+        /* Header Buttons */
+        embeddedservice-chat-header button,
+        .embeddedServiceLiveAgentStateHeader button {
+            color: white !important;
+            opacity: 0.9 !important;
+        }
+        
+        embeddedservice-chat-header button:hover,
+        .embeddedServiceLiveAgentStateHeader button:hover {
+            opacity: 1 !important;
+        }
+        
+        /* Message Area Background - Match Home Genie */
+        .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI,
+        .embeddedServiceLiveAgentStateChatItem,
+        embeddedservice-chat-message {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+        }
+        
+        /* Agent/Bot Messages */
+        .embeddedServiceLiveAgentStateChatItem.agent .chatMessage,
+        embeddedservice-chat-message.agent .message-content,
+        .slds-chat-message__text_agent {
+            background-color: #f3f4f6 !important;
+            border-radius: 12px !important;
+            color: #111827 !important;
+            padding: 0.875rem 1rem !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        }
+        
+        /* User Messages - Match Home Genie Gradient */
+        .embeddedServiceLiveAgentStateChatItem.customer .chatMessage,
+        embeddedservice-chat-message.customer .message-content,
+        .slds-chat-message__text_customer {
+            background: linear-gradient(135deg, #00A1E0 0%, #0077B5 100%) !important;
+            border-radius: 12px !important;
+            color: white !important;
+            padding: 0.875rem 1rem !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        }
+        
+        /* Input Field - Match Home Genie */
+        .embeddedServiceLiveAgentStateChatInputFooter textarea,
+        embeddedservice-chat-input textarea,
+        .slds-chat-input__textarea {
+            border: 2px solid #e5e7eb !important;
+            border-radius: 12px !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+            font-size: 0.9375rem !important;
+            padding: 0.875rem 1rem !important;
+        }
+        
+        .embeddedServiceLiveAgentStateChatInputFooter textarea:focus,
+        embeddedservice-chat-input textarea:focus,
+        .slds-chat-input__textarea:focus {
+            border-color: #00A1E0 !important;
+            box-shadow: 0 0 0 3px rgba(0, 161, 224, 0.1) !important;
+            outline: none !important;
+        }
+        
+        /* Send Button - Match Home Genie */
+        .embeddedServiceLiveAgentStateChatInputFooter button.uiButton--default,
+        embeddedservice-chat-input button[type="submit"],
+        .slds-chat-input__send-button {
+            background: linear-gradient(135deg, #00A1E0 0%, #0077B5 100%) !important;
+            border-radius: 12px !important;
+            border: none !important;
+            color: white !important;
+            font-weight: 500 !important;
+        }
+        
+        .embeddedServiceLiveAgentStateChatInputFooter button.uiButton--default:hover,
+        embeddedservice-chat-input button[type="submit"]:hover,
+        .slds-chat-input__send-button:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 4px 12px rgba(0, 161, 224, 0.3) !important;
+        }
+        
+        /* Quick Reply Buttons - Match Home Genie */
+        .embeddedServiceLiveAgentStateChatMenuMessage button,
+        embeddedservice-chat-quick-actions button,
+        .slds-chat-quick-action__button {
+            background: white !important;
+            border: 2px solid #e5e7eb !important;
+            border-radius: 12px !important;
+            color: #374151 !important;
+            font-weight: 500 !important;
+            padding: 0.875rem 1rem !important;
+        }
+        
+        .embeddedServiceLiveAgentStateChatMenuMessage button:hover,
+        embeddedservice-chat-quick-actions button:hover,
+        .slds-chat-quick-action__button:hover {
+            background: #f9fafb !important;
+            border-color: #00A1E0 !important;
+            color: #00A1E0 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0, 161, 224, 0.15) !important;
+        }
+        
+        /* Scrollbar Styling */
+        .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI::-webkit-scrollbar,
+        embeddedservice-chat-message-list::-webkit-scrollbar {
+            width: 8px !important;
+        }
+        
+        .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI::-webkit-scrollbar-track,
+        embeddedservice-chat-message-list::-webkit-scrollbar-track {
+            background: #f3f4f6 !important;
+        }
+        
+        .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI::-webkit-scrollbar-thumb,
+        embeddedservice-chat-message-list::-webkit-scrollbar-thumb {
+            background: #d1d5db !important;
+            border-radius: 4px !important;
+        }
+        
+        .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI::-webkit-scrollbar-thumb:hover,
+        embeddedservice-chat-message-list::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af !important;
+        }
+        
+        /* Agentforce Logo in Header */
+        .agentforce-logo-header {
+            width: 48px;
+            height: 48px;
+            margin-left: auto;
+            display: inline-block;
         }
     </style>
 
@@ -1254,7 +1423,10 @@
                 // Hide the default Salesforce chat button
                 embeddedservice_bootstrap.settings.language = 'en_US';
                 embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
-
+                
+                // Customize Agentforce branding to match Home Genie
+                embeddedservice_bootstrap.settings.headerText = 'Home Genie';
+                
                 embeddedservice_bootstrap.init(
                     '00DgL00000Etw1h',
                     'Nordic_Haus',
@@ -1309,6 +1481,41 @@
             }
         }
         
+        // Inject Agentforce logo into chat header
+        function injectAgentforceLogo() {
+            // Wait for the DOM to be ready
+            setTimeout(() => {
+                try {
+                    // Try multiple selectors to find the header
+                    const headerSelectors = [
+                        'embeddedservice-chat-header',
+                        '.embeddedServiceLiveAgentStateHeader',
+                        '.slds-chat-header'
+                    ];
+                    
+                    let header = null;
+                    for (const selector of headerSelectors) {
+                        header = document.querySelector(selector);
+                        if (header) break;
+                    }
+                    
+                    if (header && !header.querySelector('.agentforce-logo-header')) {
+                        // Create logo element
+                        const logo = document.createElement('img');
+                        logo.src = 'https://cdn.prod.website-files.com/654925f7aa6b1fc838bfd4d3/673379d676a757237c23b6e6_Agentforce.png';
+                        logo.alt = 'Agentforce';
+                        logo.className = 'agentforce-logo-header';
+                        
+                        // Append to header
+                        header.appendChild(logo);
+                        console.log('Agentforce logo injected into header');
+                    }
+                } catch (error) {
+                    console.error('Error injecting Agentforce logo:', error);
+                }
+            }, 500);
+        }
+        
         // Event Listeners for Agentforce lifecycle
         
         // Fires when Agentforce is ready
@@ -1328,6 +1535,8 @@
         window.addEventListener('onEmbeddedMessagingConversationOpened', function(event) {
             console.log('Conversation opened');
             hideCustomChat();
+            // Inject Agentforce logo into header
+            injectAgentforceLogo();
         });
         
         // Fires when chat window is closed
@@ -1345,6 +1554,8 @@
         window.addEventListener('onEmbeddedMessagingConversationStarted', function(event) {
             console.log('Conversation started:', event.detail);
             hideCustomChat();
+            // Inject Agentforce logo into header
+            injectAgentforceLogo();
         });
     </script>
     <script type='text/javascript' src='https://orgfarm-37c511d2f9.my.site.com/ESWNordicHaus1763655527384/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
